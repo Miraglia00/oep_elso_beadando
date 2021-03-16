@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1615124779 source:e:\oep gyak 2.felev\sakktabla-matrix\src\chesstablematrix.cpp
+	"ChessTableMatrix.h"
+	<iostream>
+	<math.h>
+
+1615127938 e:\oep gyak 2.felev\sakktabla-matrix\include\chesstablematrix.h
+	<vector>
+
+1615124848 source:e:\oep gyak 2.felev\sakktabla-matrix\main.cpp
+	<iostream>
+	"ChessTableMatrix.h"
+
