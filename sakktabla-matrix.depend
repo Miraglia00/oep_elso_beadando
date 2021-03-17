@@ -11,3 +11,19 @@
 	<iostream>
 	"ChessTableMatrix.h"
 
+1615975189 source:c:\users\zsolti-laptop\desktop\oep_elso_beadando\main.cpp
+	<iostream>
+	"ChessTableMatrix.h"
+	"Menu.h"
+
+1615975189 c:\users\zsolti-laptop\desktop\oep_elso_beadando\include\chesstablematrix.h
+	<vector>
+
+1615975189 c:\users\zsolti-laptop\desktop\oep_elso_beadando\include\menu.h
+	"ChessTableMatrix.h"
+
+1615975189 source:c:\users\zsolti-laptop\desktop\oep_elso_beadando\src\chesstablematrix.cpp
+	"ChessTableMatrix.h"
+	<iostream>
+	<math.h>
+
