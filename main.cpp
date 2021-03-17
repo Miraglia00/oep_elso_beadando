@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ChessTableMatrix.h"
+#include "Menu.h"
 /*Valósítsa meg az egész számokat tartalmazó „sakktábla” mátrixtípust. Ezen m×n-es mátrixok
 soraiban biztosan nulla értékû minden második elem. A „nem-nulla” értékek sakktábla-szerûen
 helyezkednek el az [1,1], [1,3], ... , [2,2], [2,4], ... indexû helyeken. A típus reprezentációjában
@@ -12,7 +13,9 @@ using namespace std;
 
 int main()
 {
-    ChessTableMatrix matrix(2,2);
+    Menu menu;
+    menu.listMenu();
+    /*ChessTableMatrix matrix(2,2);
     matrix.add(1);
     matrix.add(2);
 
@@ -29,6 +32,6 @@ int main()
     cout<<endl<<"===========OSSZEGUK==========="<<endl;
     osszeg.displayMatrix();
     cout<<endl<<"============SZORZATUK========="<<endl;
-    szorzat.displayMatrix();
+    szorzat.displayMatrix();*/
     return 0;
 }
