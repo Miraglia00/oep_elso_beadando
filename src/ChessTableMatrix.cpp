@@ -6,7 +6,7 @@ void ChessTableMatrix::add(int a) {
     if(matrix.size() <= (unsigned int)getMax()) {
         matrix.push_back(a);
     }else{
-        throw FULL_MATRIX;
+        throw "The matrix is full!";
     }
 }
 
@@ -15,7 +15,7 @@ int ChessTableMatrix::getMax() const {
 }
 
 void ChessTableMatrix::displayMatrix(){
-    if((unsigned int)getMax() != matrix.size()) { throw NOT_FULL_MATRIX; }
+    if((unsigned int)getMax() != matrix.size()) { throw "The matrix is not properly filled"; }
     vector<int> fullMatrix = getFullMatrix();
 
     for(int i= 0; i < realSize; i++){
@@ -27,8 +27,8 @@ void ChessTableMatrix::displayMatrix(){
 }
 
 int ChessTableMatrix::getValue(int i, int j){
-    if((unsigned int)getMax() != matrix.size()) { throw NOT_FULL_MATRIX; }
-    if((i * j) > (m * n)) { throw INVALID_DIMENSION; }
+    if((unsigned int)getMax() != matrix.size()) { throw "The matrix is not properly filled"; }
+    if(i > m || j > n) { throw "Invalid dimension provided, the matrix value cannot be returned!"; }
     vector<int> fullMatrix = getFullMatrix();
     return fullMatrix[(m * (i-1)) + j-1];
 }
@@ -43,10 +43,21 @@ vector<int> ChessTableMatrix::getNonZeroItems(){
 
 vector<int> ChessTableMatrix::getFullMatrix() {
     vector<int> fullMatrix;
+    int fordit = false;
     for(int i = 0; i < (m*n); ++i){
         if(m == n){
-            int fordit = false;
-            if(fullMatrix.size() % m == 0 && fullMatrix.size() != 0){
+            if(fullMatrix.size() % m == 0 && fullMatrix.size() != 0 && m % 2 == 0 ){
+                fordit = !fordit;
+            }
+            if(fordit){
+                fullMatrix.push_back(0);
+                fullMatrix.push_back(matrix[i]);
+            }else{
+                fullMatrix.push_back(matrix[i]);
+                fullMatrix.push_back(0);
+            }
+        }else if(m % 2 == 0 || n % 2 == 0 ){
+            if(fullMatrix.size() % n == 0 && fullMatrix.size() != 0){
                 fordit = !fordit;
             }
             if(fordit){
@@ -66,7 +77,7 @@ vector<int> ChessTableMatrix::getFullMatrix() {
 }
 
 ChessTableMatrix ChessTableMatrix::operator+(ChessTableMatrix m1){
-    if(m1.m != m || m1.n != n) { throw INVALID_DIMENSION; }
+    if(m1.m != m || m1.n != n) { throw "Invalid dimension provided!"; }
     ChessTableMatrix newMatrix(m,n);
     vector<int> items = getNonZeroItems();
     vector<int> items1 = m1.getNonZeroItems();
@@ -78,7 +89,7 @@ ChessTableMatrix ChessTableMatrix::operator+(ChessTableMatrix m1){
 }
 
 ChessTableMatrix ChessTableMatrix::operator*(ChessTableMatrix m1){
-    if(m1.m != n) { throw INVALID_DIMENSION; }
+    if(m1.m != n) { throw "Invalid dimension provided!"; }
     ChessTableMatrix newMatrix(m,m1.n);
     vector<int> items = getFullMatrix();
     vector<int> items1 = m1.getFullMatrix();
@@ -99,8 +110,27 @@ ChessTableMatrix ChessTableMatrix::operator*(ChessTableMatrix m1){
     return newMatrix;
 }
 
+ChessTableMatrix ChessTableMatrix::operator*(int num){
+    ChessTableMatrix newMatrix(m,n);
+    vector<int> items = getNonZeroItems();
+
+    for(size_t i = 0; i < matrix.size(); i++){
+        newMatrix.add(items[i]*num);
+    }
+    return newMatrix;
+}
+
+ChessTableMatrix::getR() const{
+    return m;
+}
+
+ChessTableMatrix::getC() const{
+    return n;
+}
+
 ChessTableMatrix::ChessTableMatrix(int dim_m, int dim_n)
 {
+    if(dim_m < 1 || dim_n < 1) throw "Invalid dimension, must be bigger than 1!";
     m = dim_m;
     n = dim_n;
     realSize = m * n;
