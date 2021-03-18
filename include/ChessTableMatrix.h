@@ -8,13 +8,6 @@ using namespace std;
 class ChessTableMatrix
 {
     public:
-        enum ChessTableMatrixError{
-            FULL_MATRIX,
-            NOT_FULL_MATRIX,
-            INVALID_DIMENSION,
-        };
-
-        int m = 0, n = 0;
 
         void add(int a);
 
@@ -32,12 +25,19 @@ class ChessTableMatrix
 
         ChessTableMatrix operator*(ChessTableMatrix m1);
 
+        ChessTableMatrix operator*(int num);
+
         ChessTableMatrix(int dim_m, int dim_n);
+
+        int getR() const;
+        int getC() const;
+
         virtual ~ChessTableMatrix();
 
     protected:
 
     private:
+        int m = 0, n = 0;
         vector<int> matrix;
         int realSize;
 };
