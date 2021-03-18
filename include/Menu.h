@@ -7,6 +7,7 @@
 class Menu
 {
     public:
+
         Menu();
         virtual ~Menu();
 
@@ -18,11 +19,27 @@ class Menu
 
         void listMatrices();
 
-        void storeMatrix();
+        void storeMatrix(ChessTableMatrix m);
 
+        void flush();
+
+        void displaySelectedMatrix();
+
+        void selectMatrix();
+
+        void displaySpecifiedValueOfMatrix();
+
+        void addTwoMatrices();
+
+        void formatMatrix(ChessTableMatrix m, size_t ind);
+
+        void multiplyMatrixByScalar();
+
+        void multiplyMatrixByMatrix();
     protected:
 
     private:
+        int selected = -1;
         vector<ChessTableMatrix> matrices;
 };
 
