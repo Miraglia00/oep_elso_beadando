@@ -120,11 +120,11 @@ ChessTableMatrix ChessTableMatrix::operator*(int num){
     return newMatrix;
 }
 
-ChessTableMatrix::getR() const{
+int ChessTableMatrix::getR() const{
     return m;
 }
 
-ChessTableMatrix::getC() const{
+int ChessTableMatrix::getC() const{
     return n;
 }
 

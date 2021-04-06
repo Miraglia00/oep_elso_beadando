@@ -34,6 +34,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="catch.hpp" />
 		<Unit filename="include/ChessTableMatrix.h" />
 		<Unit filename="include/Menu.h" />
 		<Unit filename="inp.txt" />
